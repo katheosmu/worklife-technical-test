@@ -29,6 +29,3 @@ def update_vacation(vacation_id: UUID, vacation_in: VacationUpdateCreate, sessio
 @router.delete("/{vacation_id}")
 def delete_vacation(vacation_id: UUID, session: Session = Depends(get_db)):
     return VacationRepository.delete(session=session, id=vacation_id)
-
-def calculate_duration():
-    pass

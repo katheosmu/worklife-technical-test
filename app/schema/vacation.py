@@ -14,6 +14,10 @@ class VacationUpdateCreate(sqlalchemy_to_pydantic(VacationModel)):
         date_format = '%Y-%m-%d'
         start_date = values.get("start_date")
         end_date =  values.get("end_date")
+        
+        if start_date is None or end_date is None:
+            raise ValueError("Please specify both dates")
+        
         try:
             obj_start_date = datetime.datetime.strptime(start_date, date_format)
         except ValueError:
